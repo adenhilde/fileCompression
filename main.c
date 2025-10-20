@@ -3,10 +3,10 @@
 #define NUMARGS 3
 
 char usage[] = "\
-usage: zipper [ -z / -u ] [input] [output] \n \
-file compression algorithm \n \
-written in C \n \
-Aden Hilderbrand\n";
+usage: zipper [ -z / -u ] [input] [output] \n\
+        file compression algorithm \n\
+        written in C \n\
+        Aden Hilderbrand\n";
 
 int main(int argc, char *argv[]){
         if (argc < NUMARGS) {
