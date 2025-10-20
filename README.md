@@ -1,11 +1,11 @@
 # fileCompression
 
-### How To Run
+## How To Run
 
-> make / make all
+#### make / make all
     creates object files and executable 
 
-> make clean
+#### make clean
     removes object files and executables
 
 
