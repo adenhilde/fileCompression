@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra
 TARGET = zipper
 
 # source
-SRC = main.c
+SRC = zipper.c file_io.c
+HEADERS = file_io.h 
 
 # create object files
 OBJ = $(SRC:.c=.o)
@@ -17,7 +18,7 @@ $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
 # compile source files into objects
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # clean build files
