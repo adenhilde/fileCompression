@@ -5,8 +5,8 @@ CFLAGS = -Wall -Wextra
 TARGET = zipper
 
 # source
-SRC = zipper.c file_io.c
-HEADERS = file_io.h 
+SRC = zipper.c huffman_tree.c huffman_codec.c
+HEADERS = huffman_tree.h huffman_codec.h
 
 # create object files
 OBJ = $(SRC:.c=.o)

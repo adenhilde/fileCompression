@@ -1,7 +1,9 @@
 #include <stdio.h>
-#include <string.h> // strcmp
+#include <string.h>
+#include "huffman_codec.h"
 
-static void printUsage(const char * programName) {
+//static since only used in this file
+static void printUsage(const char* programName) {
 	printf("Usage: %s [-z | -u] <input_file> <output_file>\n", programName);
 	printf("  -z    Compress (zip) the input file\n");
 	printf("  -u    Decompress (unzip) the input file\n");
@@ -23,10 +25,10 @@ int main(int argc, char *argv[]){
 
 	if (strcmp(mode, "-z") == 0) {
 		printf("Zipping %s -> %s\n", inputFile, outputFile);
-		// compressFile(inputFile, outputFile);
+		return compressFile(inputFile, outputFile);
 	} else if (strcmp(mode, "-u") == 0) {
 		printf("Unzipping %s -> %s\n", inputFile, outputFile);
-		// decompressFile(inputFile, outputFile);
+		return decompressFile(inputFile, outputFile);
 	} else {
 		printf("Error: Invalid mode '%s'\n\n", mode);
 		printUsage(argv[0]);
