@@ -2,8 +2,8 @@
 #include<string.h>
 #include<stdlib.h>
 
-#include "huffman_codec.h"
-#include "LZ77.h"
+#include "../include/huffman_codec.h"
+#include "../include/LZ77.h"
 
 static void printUsage(const char* programName) {
 	printf("Usage: %s [options] <input file> <output file>\n", programName);

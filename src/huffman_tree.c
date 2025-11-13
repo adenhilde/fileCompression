@@ -1,4 +1,4 @@
-#include "huffman_tree.h"
+#include "../include/huffman_tree.h"
 #include<stdlib.h>
 
 MinHeapNode* newNode(unsigned char data, unsigned int freq) {

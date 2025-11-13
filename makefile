@@ -3,12 +3,13 @@ CFLAGS = -Wall -Wextra
 
 TARGET = compress
 
-SRC = compress.c huffman_tree.c huffman_codec.c LZ77.c
-HEADERS = huffman_tree.h huffman_codec.h LZ77.h
+SRC = src/compress.c src/huffman_tree.c src/huffman_codec.c src/LZ77.c
+HEADERS = include/huffman_tree.h include/huffman_codec.h include/LZ77.h
 
 OBJ = $(SRC:.c=.o)
 
 all: $(TARGET)
+	rm -f $(OBJ)
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
@@ -17,4 +18,4 @@ $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(TARGET)
