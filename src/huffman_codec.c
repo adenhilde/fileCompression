@@ -260,15 +260,7 @@ int compressFile(const char* inputFile, const char* outputFile){
 	}
 
 	fseek(outFile, 0, SEEK_END);
-	long compressedSize = ftell(outFile);
 	fclose(outFile);
-
-	printf("\nCompression Stats\n");
-	printf("Original Size:       %zu bytes (%zu bits)\n", fileSize, fileSize*8);
-	printf("Compressed size:     %ld bytes (%zu bits)\n", compressedSize, totalBits);
-	printf("Compression ratio:   %.2f%%\n", (1.0 - (double)compressedSize / fileSize) * 100);
-	printf("Space saved:         %zu bytes\n", fileSize - compressedSize);
-	printf("\nCompression complete\n");
 
 	return 0;
 }
