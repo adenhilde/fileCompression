@@ -10,7 +10,7 @@
 
 /*-  Functions  -*/
 int findMatch(unsigned char window[], int windowStart, int windowFill, unsigned char *look, int lookSize, int *outLen);     /* This searches for repeated sequences */
-void updateWindow(unsigned char window[], int *windowStart, int &windowFill, int offset, int len, unsigned char next);      /* Updates the "window" to move it forward by 1 */
+void updateWindow(unsigned char window[], int *windowStart, int *windowFill, int offset, int len, unsigned char next);      /* Updates the "window" to move it forward by 1 */
 void compressLZ77(FILE *in, FILE *out);                                                                                     /* The compressor */
 
 /* Looks through the entire sliding window and finds the longest substring that matches the beginning of the lookahead buffer (present window) */
