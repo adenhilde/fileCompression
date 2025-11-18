@@ -10,7 +10,7 @@
 
 /*-  Functions  -*/
 int findMatch(unsigned char window[], int windowStart, int windowFill, unsigned char *look, int lookSize, int *outLen);     /* This searches for repeated sequences */
-void updateWindow(unsigned char window[], int *windowStart, int &windowfill, int offset, int len, unsigned char next);      /* Updates the "window" to move it forward by 1 */
+void updateWindow(unsigned char window[], int *windowStart, int &windowFill, int offset, int len, unsigned char next);      /* Updates the "window" to move it forward by 1 */
 void compressLZ77(FILE *in, FILE *out);                                                                                     /* The compressor */
 
 /* Looks through the entire sliding window and finds the longest substring that matches the beginning of the lookahead buffer (present window) */
@@ -36,7 +36,7 @@ int findMatch(unsigned char window[], int windowStart, int windowFill, unsigned 
     int i = 0;                  
     int L = 0;  
     unsigned char w;                                
-    for(i = 0; i < WindowFill; i++) { 
+    for(i = 0; i < windowFill; i++) { 
         L = 0;
         while(L < maxLen) {                                             /* Compares window[i + L] with look[L], checking each window position trying to match it to look[L] comparing one byte at a time */
             w = window[(i+L) % WINDOW_SIZE];
@@ -107,7 +107,7 @@ void compressLZ77(FILE *in, FILE *out) {
 
     while(lookSize > 0) {                                               /* Main compression loop */
         len = 0;                                                        /* Resets length to 0 after each loop */
-        offset = findMatch(window, windowStart, windowfill, look, lookSize, &len);  /* Calls the findMatch function, which finds the longest match between the past and present windows */
+        offset = findMatch(window, windowStart, windowFill, look, lookSize, &len);  /* Calls the findMatch function, which finds the longest match between the past and present windows */
         
         next = look[len];                                               /* Finds the next byte after the match so it can return to that byte once the previous sequence has been mentioned */
 
@@ -117,7 +117,7 @@ void compressLZ77(FILE *in, FILE *out) {
         fputc(len & 255, out);                                          /* Copies the length to the out file */
         fputc(next, out);                                               /* Copies the literal "next" to the out file */
         
-        updateWindow(window, &windowStart, &windowfill, offset, len, next);          /* Calls the updateWindow function to update the past window so it can be referred to by the present window*/ 
+        updateWindow(window, &windowStart, &windowFill, offset, len, next);          /* Calls the updateWindow function to update the past window so it can be referred to by the present window*/ 
 
         /* In simple terms this just removes the encoded byte from the lookahead buffer so it doesn't create an infinite loop */
         adv = len+1;
