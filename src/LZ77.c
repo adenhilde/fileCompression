@@ -80,7 +80,7 @@ void updateWindow(unsigned char window[], int *windowStart, int *windowFill, int
     writePosition++;
 
     if ((*windowFill) < WINDOW_SIZE) {
-        (*windowFill++);
+        (*windowFill)++;
     }
     
     *windowStart = writePosition % WINDOW_SIZE;                         /* Moves the sliding window forward by len(length) + 1 bytes */
