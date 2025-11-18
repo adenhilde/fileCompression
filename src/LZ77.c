@@ -71,16 +71,16 @@ void updateWindow(unsigned char window[], int *windowStart, int *windowFill, int
         c = window[src];
         window[writePosition % WINDOW_SIZE] = c;                        /* Writes the byte at the current position */
         writePosition++;
-        if(*windowFill < WINDOW_SIZE) {
-            *windowFill++;
+        if((*windowFill) < WINDOW_SIZE) {
+            (*windowFill)++;
         }
     }
         
     window[writePosition % WINDOW_SIZE] = next;                         /* Sets current position to "next" then moves forward by another position in the next line*/
     writePosition++;
 
-    if (*windowFill < WINDOW_SIZE) {
-        *windowFill++;
+    if ((*windowFill) < WINDOW_SIZE) {
+        (*windowFill++);
     }
     
     *windowStart = writePosition % WINDOW_SIZE;                         /* Moves the sliding window forward by len(length) + 1 bytes */
